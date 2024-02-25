@@ -1,9 +1,15 @@
 package org.tugas;
 
+import java.util.Objects;
 import java.util.Scanner;
+import java.util.Arrays;
 public class tugas_1 {
     public static void main(String[] args){
-        String[] nimData;
+        String[] nimData = {
+                "202310370311183",
+                "202210370311203",
+                "123"
+        };
         String nimUser;
         String usernameData;
         String passwordData;
@@ -23,10 +29,19 @@ public class tugas_1 {
         switch (option) {
             case "1":
                 System.out.println("Enter your NIM: ");
+                nimUser = objInput.nextLine();
+                if (Arrays.asList(nimData).contains(nimUser)) {
+                    System.out.println("Succesful login as Student");
+                } else {
+                    System.out.println("User Not Found");
+                }
+
                 break;
             case "2":
                 System.out.println("Enter your username (admin): ");
+                usernameUser = objInput.nextLine();
                 System.out.println("Enter your password (admin): ");
+                passwordUser = objInput.nextLine();
                 break;
             case "3":
                 System.out.println("adios");
