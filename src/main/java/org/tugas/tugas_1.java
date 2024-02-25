@@ -1,6 +1,5 @@
 package org.tugas;
 
-import java.util.Objects;
 import java.util.Scanner;
 import java.util.Arrays;
 public class tugas_1 {
@@ -8,11 +7,10 @@ public class tugas_1 {
         String[] nimData = {
                 "202310370311183",
                 "202210370311203",
-                "123"
         };
         String nimUser;
-        String usernameData;
-        String passwordData;
+        String usernameData = "admin";
+        String passwordData = "adm1n";
         String usernameUser;
         String passwordUser;
         String option;
@@ -23,25 +21,29 @@ public class tugas_1 {
         System.out.println("2. Login as Admin");
         System.out.println("3. Exit");
 
-        System.out.println("Choose option (1-3): ");
+        System.out.print("Choose option (1-3): ");
         option = objInput.nextLine();
 
         switch (option) {
             case "1":
-                System.out.println("Enter your NIM: ");
+                System.out.print("Enter your NIM: ");
                 nimUser = objInput.nextLine();
                 if (Arrays.asList(nimData).contains(nimUser)) {
                     System.out.println("Succesful login as Student");
                 } else {
                     System.out.println("User Not Found");
                 }
-
                 break;
             case "2":
-                System.out.println("Enter your username (admin): ");
+                System.out.print("Enter your username (admin): ");
                 usernameUser = objInput.nextLine();
-                System.out.println("Enter your password (admin): ");
+                System.out.print("Enter your password (admin): ");
                 passwordUser = objInput.nextLine();
+                if (usernameUser.equals(usernameData) && passwordUser.equals(passwordData)){
+                    System.out.println("Succesful login as Admin");
+                } else {
+                    System.out.println("Admin User Not Found");
+                }
                 break;
             case "3":
                 System.out.println("adios");
