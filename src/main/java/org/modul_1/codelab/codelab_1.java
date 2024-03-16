@@ -1,4 +1,4 @@
-package org.codelab;
+package org.modul_1.codelab;
 
 import java.time.LocalDate;
 import java.time.Period;

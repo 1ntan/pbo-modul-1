@@ -1,7 +1,7 @@
-package org.tugas;
+package org.modul_1.tugas;
 
-import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Scanner;
 public class tugas_1 {
     public static void main(String[] args){
         String[] nimData = {
