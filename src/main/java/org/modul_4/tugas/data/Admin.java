@@ -7,14 +7,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Admin extends User implements iMenu {
-    private String adminUsername = "admin";
-    public String getAdminUsername(){
-        return adminUsername;
-    }
-    private String adminPassword = "admin";
-    public String getAdminPassword(){
-        return adminPassword;
-    }
     private static List<Student> studentList = new ArrayList<>();
     public static List<Student> getStudentList() {
         return studentList;
@@ -47,9 +39,13 @@ public class Admin extends User implements iMenu {
 
         studentList.add(student);
     }
-    public void inputBook(){}
+    public void inputBook(){
+        super.inputBook();
+    }
 
-    public void displayBook(){}
+    public void displayBook(){
+        super.displayBook();
+    }
 
     public void displayStudent(){
         System.out.println("Data mahasiswa: ");
@@ -59,8 +55,8 @@ public class Admin extends User implements iMenu {
         }
     }
 
-    public boolean isAdmin(){
-        return false;
+    public boolean isAdmin(String username, String password){
+        return username.equals("admin") && password.equals("admin");
     }
 
     public String generateId(){
@@ -77,7 +73,9 @@ public class Admin extends User implements iMenu {
             System.out.println("\nMenu: ");
             System.out.println("1. Tambahkan Data Mahasiswa");
             System.out.println("2. Tampilkan Data Mahasiswa");
-            System.out.println("3. Keluar");
+            System.out.println("3. Tambahkan Buku");
+            System.out.println("4. Tampilkan Buku");
+            System.out.println("5. Keluar");
 
             System.out.print("Pilihan Anda: ");
             pilihan = objInput.nextLine();
@@ -90,6 +88,12 @@ public class Admin extends User implements iMenu {
                     displayStudent();
                     break;
                 case "3":
+                    inputBook();
+                    break;
+                case "4":
+                    displayBook();
+                    break;
+                case "5":
                     System.out.println("adios");
                     ulang = false;
                     break;

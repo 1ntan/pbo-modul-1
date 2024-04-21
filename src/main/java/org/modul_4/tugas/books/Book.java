@@ -7,10 +7,11 @@ public class Book {
     private String category;
     private int stock;
     private int duration;
-    public Book(String bookId, String title, String author, int stock){
+    public Book(String bookId, String title, String author, String category, int stock){
         this.bookId = bookId;
         this.title = title;
         this.author = author;
+        this.category = category;
         this.stock = stock;
     }
     public void setBookId(String bookId){

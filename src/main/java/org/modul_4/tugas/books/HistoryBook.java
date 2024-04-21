@@ -1,8 +1,7 @@
 package org.modul_4.tugas.books;
 
 public class HistoryBook extends Book {
-    private String category;
-    public HistoryBook(String bookId, String title, String author, int stock){
-        super(bookId, title, author, stock);
+    public HistoryBook(String bookId, String title, String author, String category, int stock){
+        super(bookId, title, author, category, stock);
     }
 }

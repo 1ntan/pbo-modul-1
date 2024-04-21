@@ -56,7 +56,9 @@ public class Student extends User implements iMenu {
         System.out.println("\nNama: " + name + "\nNim: " + nim + "\nJurusan: " + programStudi + "\nFakultas: " + faculty);
     }
     public void showBorrowedBooks(){}
-    public void displayBook(){}
+    public void displayBook(){
+        super.displayBook();
+    }
     public void logout(){}
     public void returnBook(){}
 
@@ -73,10 +75,11 @@ public class Student extends User implements iMenu {
         while (ulang) {
             System.out.println("\nStudent menu: ");
             System.out.println("0. Tampil info student");
-            System.out.println("1. Buku terpinjam");
-            System.out.println("2. Pinjam buku");
-            System.out.println("3. Kembalikan buku");
-            System.out.println("4. Pinjam buku atau Logout");
+            System.out.println("1. Tampilkan Buku yang Dapat Dipinjam ");
+            System.out.println("2. Buku terpinjam");
+            System.out.println("3. Pinjam buku");
+            System.out.println("4. Kembalikan buku");
+            System.out.println("5. Pinjam buku atau Logout");
 
             System.out.print("Pilihan Anda: ");
             pilihan = objInput.nextLine();
@@ -87,15 +90,19 @@ public class Student extends User implements iMenu {
                     displayInfo();
                     break;
                 case "1":
-                    System.out.println("Buku terpinjam");
+                    System.out.println("Daftar Buku");
+                    displayBook();
                     break;
                 case "2":
-                    System.out.println("Pinjam buku");
+                    System.out.println("Buku terpinjam");
                     break;
                 case "3":
-                    System.out.println("Kembalikan buku");
+                    System.out.println("Pinjam buku");
                     break;
                 case "4":
+                    System.out.println("Kembalikan buku");
+                    break;
+                case "5":
                     System.out.println("Pinjam buku atau Logout");
                     ulang = false;
                     break;
