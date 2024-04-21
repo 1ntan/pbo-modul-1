@@ -1,6 +1,9 @@
 package org.modul_4.tugas.data;
 
 import org.modul_4.tugas.books.Book;
+import org.modul_4.tugas.books.HistoryBook;
+import org.modul_4.tugas.books.StoryBook;
+import org.modul_4.tugas.books.TextBook;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -23,29 +26,6 @@ public class User {
     public void inputBook(){
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Pilih kategori buku:");
-        System.out.println("1. Buku Cerita");
-        System.out.println("2. Buku Sejarah");
-        System.out.println("3. Buku Teks");
-        System.out.print("Masukkan pilihan (1-3): ");
-        String pilihanKategori = scanner.nextLine();
-
-        String kategori;
-        switch (pilihanKategori) {
-            case "1":
-                kategori = "Buku Cerita";
-                break;
-            case "2":
-                kategori = "Buku Sejarah";
-                break;
-            case "3":
-                kategori = "Buku Teks";
-                break;
-            default:
-                System.out.println("Pilihan tidak valid. Default ke Buku Cerita.");
-                kategori = "Buku Cerita";
-                break;
-        }
         System.out.println("Masukkan detail buku:");
         System.out.print("Masukkan ID buku: ");
         String id = scanner.nextLine();
@@ -56,8 +36,36 @@ public class User {
         System.out.print("Masukkan stok buku: ");
         int stok = Integer.parseInt(scanner.nextLine());
 
-        Book bukuBaru = new Book(id, judul, pengarang, kategori, stok);
-        bookList.add(bukuBaru);
+        System.out.println("Pilih kategori buku:");
+        System.out.println("1. Buku Cerita");
+        System.out.println("2. Buku Sejarah");
+        System.out.println("3. Buku Teks");
+        System.out.print("Masukkan pilihan (1-3): ");
+        String pilihanKategori = scanner.nextLine();
+        Book newBook = null;
+
+        String kategori;
+        switch (pilihanKategori) {
+            case "1":
+                kategori = "Buku Cerita";
+                newBook = new StoryBook(id, judul, pengarang, kategori, stok);
+                break;
+            case "2":
+                kategori = "Buku Sejarah";
+                newBook = new HistoryBook(id, judul, pengarang, kategori, stok);
+                break;
+            case "3":
+                kategori = "Buku Teks";
+                newBook = new TextBook(id, judul, pengarang, kategori, stok);
+                break;
+            default:
+                System.out.println("Pilihan tidak valid. Default ke Buku Cerita.");
+                kategori = "Buku Cerita";
+                newBook = new StoryBook(id, judul, pengarang, kategori, stok);
+                break;
+        }
+
+        bookList.add(newBook);
         System.out.println("Buku berhasil ditambahkan ke perpustakaan.");
     }
 }
