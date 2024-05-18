@@ -1,9 +1,9 @@
-package org.modul_4.tugas.data;
+package org.modul_5.tugas.data;
 
-import org.modul_4.tugas.books.Book;
-import org.modul_4.tugas.books.HistoryBook;
-import org.modul_4.tugas.books.StoryBook;
-import org.modul_4.tugas.books.TextBook;
+import org.modul_5.tugas.books.Book;
+import org.modul_5.tugas.books.HistoryBook;
+import org.modul_5.tugas.books.StoryBook;
+import org.modul_5.tugas.books.TextBook;
 
 import java.util.ArrayList;
 import java.util.Scanner;
