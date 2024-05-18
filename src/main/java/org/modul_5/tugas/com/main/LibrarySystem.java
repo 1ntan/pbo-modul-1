@@ -2,6 +2,7 @@ package org.modul_5.tugas.com.main;
 
 import org.modul_5.tugas.data.Admin;
 import org.modul_5.tugas.data.Student;
+import org.modul_5.tugas.exception.custom.IllegalAdminAccess;
 
 import java.util.Scanner;
 
@@ -34,11 +35,14 @@ public class LibrarySystem {
                     String userName = objInput.nextLine();
                     System.out.println("Enter your password: ");
                     String passWord = objInput.nextLine();
-                    if (admin.isAdmin(userName, passWord)) {
-                        System.out.println("Succesful login as Admin");
-                        admin.menu();
-                    } else {
-                        System.out.println("Admin User Not Found");
+                    try {
+                        if (admin.isAdmin(userName, passWord)) {
+                            System.out.println("Succesful login as Admin");
+                            admin.menu();
+                        }
+                    } catch (IllegalAdminAccess e) {
+                        String errorMessage = e.getMessage();
+                        System.out.println(errorMessage);
                     }
                     break;
                 case "3":

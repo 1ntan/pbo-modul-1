@@ -1,6 +1,7 @@
 package org.modul_5.tugas.data;
 
 import org.modul_5.tugas.books.Book;
+import org.modul_5.tugas.exception.custom.InvalidMenuInput;
 import org.modul_5.tugas.util.iMenu;
 
 import java.util.ArrayList;
@@ -84,31 +85,35 @@ public class Student extends User implements iMenu {
             System.out.print("Pilihan Anda: ");
             pilihan = objInput.nextLine();
 
-            switch (pilihan){
-                case "0":
-                    System.out.println("Info student");
-                    displayInfo();
-                    break;
-                case "1":
-                    System.out.println("Daftar Buku");
-                    displayBook();
-                    break;
-                case "2":
-                    System.out.println("Buku terpinjam");
-                    break;
-                case "3":
-                    System.out.println("Pinjam buku");
-                    break;
-                case "4":
-                    System.out.println("Kembalikan buku");
-                    break;
-                case "5":
-                    System.out.println("Pinjam buku atau Logout");
-                    ulang = false;
-                    break;
-                default:
-                    System.out.println("inputan tidak valid");
-                    break;
+            try {
+                switch (pilihan) {
+                    case "0":
+                        System.out.println("Info student");
+                        displayInfo();
+                        break;
+                    case "1":
+                        System.out.println("Daftar Buku");
+                        displayBook();
+                        break;
+                    case "2":
+                        System.out.println("Buku terpinjam");
+                        break;
+                    case "3":
+                        System.out.println("Pinjam buku");
+                        break;
+                    case "4":
+                        System.out.println("Kembalikan buku");
+                        break;
+                    case "5":
+                        System.out.println("Pinjam buku atau Logout");
+                        ulang = false;
+                        break;
+                    default:
+                        throw new InvalidMenuInput("inputan tidak valid");
+                }
+            } catch (InvalidMenuInput e) {
+                String errorMessage = e.getMessage();
+                System.out.println(errorMessage);
             }
         }
     }

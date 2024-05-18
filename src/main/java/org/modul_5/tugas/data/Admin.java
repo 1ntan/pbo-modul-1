@@ -1,5 +1,7 @@
 package org.modul_5.tugas.data;
 
+import org.modul_5.tugas.exception.custom.IllegalAdminAccess;
+import org.modul_5.tugas.exception.custom.InvalidMenuInput;
 import org.modul_5.tugas.util.iMenu;
 
 import java.util.ArrayList;
@@ -55,8 +57,11 @@ public class Admin extends User implements iMenu {
         }
     }
 
-    public boolean isAdmin(String username, String password){
-        return username.equals("admin") && password.equals("admin");
+    public boolean isAdmin(String username, String password) throws IllegalAdminAccess {
+        if (!username.equals("admin") || !password.equals("admin")){
+            throw new IllegalAdminAccess("Invalid credentials");
+        }
+        return true;
     }
 
     public String generateId(){
@@ -80,26 +85,30 @@ public class Admin extends User implements iMenu {
             System.out.print("Pilihan Anda: ");
             pilihan = objInput.nextLine();
 
-            switch (pilihan){
-                case "1":
-                    addStudent();
-                    break;
-                case "2":
-                    displayStudent();
-                    break;
-                case "3":
-                    inputBook();
-                    break;
-                case "4":
-                    displayBook();
-                    break;
-                case "5":
-                    System.out.println("adios");
-                    ulang = false;
-                    break;
-                default:
-                    System.out.println("inputan tidak valid");
-                    break;
+            try {
+                switch (pilihan) {
+                    case "1":
+                        addStudent();
+                        break;
+                    case "2":
+                        displayStudent();
+                        break;
+                    case "3":
+                        inputBook();
+                        break;
+                    case "4":
+                        displayBook();
+                        break;
+                    case "5":
+                        System.out.println("adios");
+                        ulang = false;
+                        break;
+                    default:
+                        throw new InvalidMenuInput("inputan tidak valid");
+                }
+            } catch (InvalidMenuInput e) {
+                String errorMessage = e.getMessage();
+                System.out.println(errorMessage);
             }
         }
     }
